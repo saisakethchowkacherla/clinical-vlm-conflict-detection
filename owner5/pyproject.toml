@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clinical-conflict-owner5"
+version = "0.1.0"
+description = "Owner 5 inference-time gating fixes for clinical VLM conflict experiments."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["pandas>=2.0"]
+
+[project.scripts]
+owner5-gate = "owner5_inference.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

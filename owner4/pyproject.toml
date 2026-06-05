@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clinical-conflict-owner4"
+version = "0.1.0"
+description = "Owner 4 mock training-fix outputs for clinical VLM conflict experiments."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["pandas>=2.0"]
+
+[project.scripts]
+owner4-fix = "owner4_training.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

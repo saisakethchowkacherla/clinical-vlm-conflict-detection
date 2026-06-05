@@ -1,0 +1,6 @@
+outputs/
+outputs_*/
+checkpoints/
+adapters/
+wandb/
+real_training_data/
