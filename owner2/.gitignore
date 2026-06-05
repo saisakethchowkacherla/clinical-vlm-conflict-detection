@@ -1,0 +1,7 @@
+# Local/generated benchmark outputs.
+outputs/
+outputs_*/
+
+# Real model outputs may contain protected study identifiers; keep local unless explicitly approved.
+predictions_real/
+results_real/

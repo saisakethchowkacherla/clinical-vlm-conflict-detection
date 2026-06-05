@@ -1,0 +1,18 @@
+[inputs]
+chexpert_labels = "C:/path/to/mimic-cxr-2.0.0-chexpert.csv.gz"
+negbio_labels = "C:/path/to/mimic-cxr-2.0.0-negbio.csv.gz"
+metadata = "C:/path/to/mimic-cxr-2.0.0-metadata.csv.gz"
+split = "C:/path/to/mimic-cxr-2.0.0-split.csv.gz"
+labevents = "C:/path/to/mimiciv/hosp/labevents.csv.gz"
+
+[outputs]
+directory = "outputs"
+
+[pipeline]
+finding = "Pneumonia"
+lab_itemids = [51301, 51300]
+join_window_hours = 24
+kernel_per_cell = 120
+test_per_cell = 300
+random_seed = 20260604
+image_root = ""

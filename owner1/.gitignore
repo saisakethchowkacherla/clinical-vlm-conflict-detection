@@ -1,0 +1,12 @@
+# Local/private config with real PhysioNet paths.
+config.toml
+
+# Generated manifests and reports.
+outputs/
+outputs_*/
+
+# Real credentialed data must never be committed.
+data/
+real_data/
+mimic/
+mimic-*/

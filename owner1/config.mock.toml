@@ -1,0 +1,18 @@
+[inputs]
+chexpert_labels = "mock_data/chexpert.csv"
+negbio_labels = "mock_data/negbio.csv"
+metadata = "mock_data/metadata.csv"
+split = "mock_data/split.csv"
+labevents = "mock_data/labevents.csv"
+
+[outputs]
+directory = "outputs_mock"
+
+[pipeline]
+finding = "Pneumonia"
+lab_itemids = [51301, 51300]
+join_window_hours = 24
+kernel_per_cell = 2
+test_per_cell = 1
+random_seed = 20260604
+image_root = ""
