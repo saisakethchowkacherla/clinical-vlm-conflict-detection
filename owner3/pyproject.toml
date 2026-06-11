@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clinical-conflict-owner3"
+version = "0.1.0"
+description = "Owner 3 model inference harness and mock model generator for clinical VLM conflict experiments."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "pandas>=2.0",
+]
+
+[project.scripts]
+owner3-infer = "owner3_models.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

@@ -181,6 +181,19 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# Kaggle
+*.zip
+kaggle.json
+
+# Dataset images (large binary files — re-download via kaggle CLI)
+owner1/data/images/
+
+# IDE
+.idea/
+
+# Claude Code internal
+.claude/
+
 # PyCharm
 #   JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #   be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
