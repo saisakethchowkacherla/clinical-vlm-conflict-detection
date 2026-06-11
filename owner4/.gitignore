@@ -1,0 +1,12 @@
+# Generated outputs and training data
+outputs/
+outputs_*/
+training_data/
+
+# Real model weights — never commit
+*.bin
+*.safetensors
+*.pt
+*.pth
+checkpoint-*/
+lora_weights/

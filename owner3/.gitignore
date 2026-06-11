@@ -1,0 +1,7 @@
+# Generated outputs
+outputs/
+outputs_*/
+
+# Real model predictions may contain protected identifiers
+predictions_real/
+results_real/
