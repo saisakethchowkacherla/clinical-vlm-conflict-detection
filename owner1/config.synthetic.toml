@@ -1,0 +1,18 @@
+[inputs]
+chexpert_labels = "../data/synthetic/chexpert.csv"
+negbio_labels   = "../data/synthetic/negbio.csv"
+metadata        = "../data/synthetic/metadata.csv"
+split           = "../data/synthetic/split.csv"
+labevents       = "../data/synthetic/labevents.csv"
+
+[outputs]
+directory = "outputs_synthetic"
+
+[pipeline]
+finding          = "Pneumonia"
+lab_itemids      = [51301, 51300]
+join_window_hours = 24
+kernel_per_cell  = 120
+test_per_cell    = 300
+random_seed      = 20260604
+image_root       = ""

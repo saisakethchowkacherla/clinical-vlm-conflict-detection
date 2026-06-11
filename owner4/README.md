@@ -1,4 +1,4 @@
-# Owner 4 Training Fix
+did # Owner 4 Training Fix
 
 Owner 4 develops training-based mitigation methods. Without the real dataset/GPU, this folder implements a mock fix that transforms prediction CSVs while preserving the final evaluation contract.
 

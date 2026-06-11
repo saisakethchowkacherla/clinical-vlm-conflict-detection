@@ -216,3 +216,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+/RESEARCH_BRIEF.md
+/RESEARCH_PROGRAM.md
+/EXPERIMENT_SPEC.md
+/PRESENTATION_NOTES.md
+/Presentation_Script.docx
+/PROJECT_PROPOSAL.md
+/package-lock.json
+/package.json
+
+.claude
+/scripts/build_presentation_doc.js
+
+node_modules

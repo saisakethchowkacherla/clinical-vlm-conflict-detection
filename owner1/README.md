@@ -83,3 +83,37 @@ If the package is not installed yet, run from this `owner1` folder with:
 $env:PYTHONPATH='.\src'
 python -m owner1_pipeline.cli --config config.mock.toml
 ```
+
+## Run With Synthetic Data (no MIMIC access needed)
+
+A full-scale synthetic dataset (2,000 studies, 500 per cell) lives in `../data/synthetic/`.
+It supports the full `kernel_per_cell=120` and `test_per_cell=300` settings.
+
+**Step 1 — generate the data** (only needed once, or to regenerate):
+
+```powershell
+python ..\data\synthetic\generate_synthetic_data.py
+```
+
+**Step 2 — run the pipeline:**
+
+```powershell
+$env:PYTHONPATH='.\src'
+python -m owner1_pipeline.cli --config config.synthetic.toml
+```
+
+Outputs land in `owner1/outputs_synthetic/`:
+
+| File | Contents |
+|---|---|
+| `kernel_manifest.csv` | All 2,000 joined studies with cell labels |
+| `kernel_480.csv` | Balanced 120/cell kernel sample (patient-disjoint) |
+| `kernel_test_1200.csv` | Balanced 300/cell test sample (patient-disjoint) |
+| `cell_counts.json` | Cell counts at manifest and sample level |
+| `leakage_report.json` | Patient overlap check (should show `leakage_free: true`) |
+
+**To run the full end-to-end mock pipeline** (data → inference → scoring → fix → summary):
+
+```powershell
+..\scripts\run_synthetic_pipeline.ps1
+```
