@@ -1,0 +1,18 @@
+[inputs]
+chexpert_labels = "../data/covid19/chexpert.csv"
+negbio_labels   = "../data/covid19/negbio.csv"
+metadata        = "../data/covid19/metadata.csv"
+split           = "../data/covid19/split.csv"
+labevents       = "../data/covid19/labevents.csv"
+
+[outputs]
+directory = "outputs_covid"
+
+[pipeline]
+finding           = "COVID"
+lab_itemids       = [51301]
+join_window_hours = 24
+kernel_per_cell   = 120
+test_per_cell     = 300
+random_seed       = 20260604
+image_root        = ""

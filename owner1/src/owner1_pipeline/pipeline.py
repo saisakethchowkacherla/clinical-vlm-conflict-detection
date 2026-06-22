@@ -120,7 +120,10 @@ def load_split(split_path: Path) -> pd.DataFrame:
 
 
 def load_selected_metadata(metadata_path: Path, image_root: str | None = None) -> pd.DataFrame:
-    usecols = ["dicom_id", "subject_id", "study_id", "ViewPosition", "StudyDate", "StudyTime"]
+    base_cols = ["dicom_id", "subject_id", "study_id", "ViewPosition", "StudyDate", "StudyTime"]
+    # Peek at the CSV header to check if image_path is pre-built (e.g. COVID adapter)
+    header = pd.read_csv(metadata_path, nrows=0).columns.tolist()
+    usecols = base_cols + (["image_path"] if "image_path" in header else [])
     metadata = pd.read_csv(metadata_path, usecols=usecols)
     metadata["view_position"] = metadata["ViewPosition"].fillna("").astype(str).str.upper()
     metadata["view_rank"] = metadata["view_position"].map({"PA": 0, "AP": 1}).fillna(2).astype(int)
@@ -128,15 +131,16 @@ def load_selected_metadata(metadata_path: Path, image_root: str | None = None) -
         parse_study_datetime(date, time)
         for date, time in zip(metadata["StudyDate"], metadata["StudyTime"], strict=False)
     ]
-    metadata["image_path"] = [
-        image_relative_path(subject_id, study_id, dicom_id)
-        for subject_id, study_id, dicom_id in zip(
-            metadata["subject_id"], metadata["study_id"], metadata["dicom_id"], strict=False
-        )
-    ]
-    if image_root:
-        root = Path(image_root)
-        metadata["image_path"] = metadata["image_path"].map(lambda rel: str(root / rel))
+    if "image_path" not in metadata.columns:
+        metadata["image_path"] = [
+            image_relative_path(subject_id, study_id, dicom_id)
+            for subject_id, study_id, dicom_id in zip(
+                metadata["subject_id"], metadata["study_id"], metadata["dicom_id"], strict=False
+            )
+        ]
+        if image_root:
+            root = Path(image_root)
+            metadata["image_path"] = metadata["image_path"].map(lambda rel: str(root / rel))
 
     metadata = metadata.sort_values(
         ["subject_id", "study_id", "view_rank", "dicom_id"], kind="stable"

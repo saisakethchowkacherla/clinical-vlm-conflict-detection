@@ -229,4 +229,11 @@ __marimo__/
 .claude
 /scripts/build_presentation_doc.js
 
+covid19-radiography-database.zip
+CLAUDE_PROJECT_OVERVIEW.md
+
+# COVID-19 X-ray image dataset (883MB) — too large for git, regenerate locally
+/data/covid19-radiography-database/
+
 node_modules
+/.idea
