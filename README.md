@@ -92,9 +92,16 @@ Outputs go to each owner's `outputs_mock/` folder.
 
 A FastAPI endpoint lets the web demo call the pipeline on a single image:
 
+## Demo Frontend
+
 ```powershell
-uvicorn api.main:app --port 8000 --reload
+uvicorn api.main:app --port 8080 --reload
+cd frontend
+npm install
+npm start
 ```
+
+Then open http://localhost:3000 — the frontend connects to the API at http://127.0.0.1:8080.
 
 - `GET  /health` — returns `{"status": "ok"}`
 - `POST /predict` — accepts a chest X-ray image + lab value + reference range; returns conflict detection result
